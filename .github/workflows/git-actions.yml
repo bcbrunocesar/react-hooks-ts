@@ -9,11 +9,11 @@ jobs:
 
     steps:
         
-    - name: Npm
-      run: npm install
+    #- name: Npm
+     # run: npm install
   
-    - name: Build app
-      run: npm run-script build
+    #- name: Build app
+      #run: npm run-script build
     
     - name: SonarCloud
       uses: sonarsource/sonarcloud-github-action@master

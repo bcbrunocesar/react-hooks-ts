@@ -7,15 +7,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:    
-      - uses: actions/checkout@v1
-      - name: SonarCloud Scan
-        uses: sonarsource/sonarcloud-github-action@master
-        env: 
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      #- uses: actions/checkout@v1
+      #- name: SonarCloud Scan
+      #  uses: sonarsource/sonarcloud-github-action@master
+      #  env: 
+      #    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #    SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         
       - uses: octokit/request-action@v2.x
-      - name: Check SonarCloud      
         id: get_latest_release
         with:
           route: GET http://sonarcloud.io/api/qualitygates/project_status?projectKey=bcbrunocesar_react-hooks-ts

@@ -4,18 +4,11 @@ on: [push]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
-    steps:
-        
-    #- name: Npm
-     # run: npm install
-  
-    #- name: Build app
-      #run: npm run-script build
-    
-    - name: SonarCloud
+    steps:    
+    - uses: actions/checkout@v1
+    - name: SonarCloud Scan
       uses: sonarsource/sonarcloud-github-action@master
       env: 
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

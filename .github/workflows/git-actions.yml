@@ -15,5 +15,9 @@ jobs:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         
     - name: Check SonarCloud
-      run: http://sonarcloud.io/api/qualitygates/project_status?projectKey=bcbrunocesar_react-hooks-ts
+    - uses: octokit/request-action@v2.x
+      id: get_latest_release
+      with:
+        route: GET http://sonarcloud.io/api/qualitygates/project_status?projectKey=bcbrunocesar_react-hooks-ts
+    - run: "echo latest release: ${{ steps.get_latest_release.outputs.data }}"
       

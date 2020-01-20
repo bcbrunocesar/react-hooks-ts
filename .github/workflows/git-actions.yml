@@ -16,6 +16,9 @@ jobs:
       run: |
         echo Add other actions to build,
         echo test, and deploy your project.
+        
+    - name: Packages install
+      run: npm install
   
     - name: Build app
       run: npm run-script build

@@ -14,12 +14,12 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}          
           
-      - name: SonarCloudResult
-        run: |
-            BT_STATUS=$(curl -s https://status.bintray.com/api/v2/status.json |  jq --raw-output '.status.description')
+      - name: SonarCloudResult   
+        run: | 
+            BT_STATUS=$(curl -s http://sonarcloud.io/api/qualitygates/project_status?projectKey=bcbrunocesar_react-hooks-ts |  jq --raw-output '.projectStatus.status')
             echo “Bintray API Status: $BT_STATUS”
-            if [ “$BT_STATUS” != “All Systems Operational” ]; then
-            echo “Error [Bintray API Status: $BT_STATUS]”
-             exit 1
-            fi     
+            if [ “$BT_STATUS” != “OK” ]; then
+              echo “Error [Bintray API Status: $BT_STATUS]”
+            exit 1
+            fi
       

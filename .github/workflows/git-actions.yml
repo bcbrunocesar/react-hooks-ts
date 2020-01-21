@@ -16,7 +16,11 @@ jobs:
           
       - name: SonarCloudResult   
         run: | 
-            BT_STATUS=$(curl -iL --max-redirs 1 "http://sonarcloud.io/api/qualitygates/project_status?projectKey=bcbrunocesar_react-hooks-ts")
-            echo “Bintray API Status: $BT_STATUS”
+            BT_STATUS=$(curl -iL --max-redirs 1 "http://sonarcloud.io/api/qualitygates/project_status?projectKey=bcbrunocesar_react-hooks-ts") | jq --raw-output '.status')
+            echo "SonarCloud API: $BT_STATUS"
+            if [ "$BT_STATUS" != "OK" ]; then
+              echo "Error [SonarCloud API Status: $BT_STATUS]"
+              exit 1
+            fi 
      
       

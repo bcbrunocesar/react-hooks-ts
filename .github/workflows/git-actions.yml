@@ -15,5 +15,5 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}          
           
       - name: Echo the greeting's time
-        run: echo 'The time was ${{ steps.sonarCloudScan.outputs.projectStatus.status }}.'       
+        run: echo 'The time was ${{ steps.sonarCloudScan.projectStatus.status }}.'       
       

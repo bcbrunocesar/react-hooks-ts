@@ -16,7 +16,7 @@ jobs:
           
       - name: SonarCloudResult   
         run: | 
-            BT_STATUS=$(curl -s http://sonarcloud.io/api/qualitygates/project_status?projectKey=bcbrunocesar_react-hooks-ts)
+            BT_STATUS=$(curl http://sonarcloud.io/api/qualitygates/project_status?projectKey=bcbrunocesar_react-hooks-ts)
             echo “Bintray API Status: $BT_STATUS”
      
       

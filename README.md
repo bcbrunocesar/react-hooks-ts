@@ -8,3 +8,10 @@ git push origin master
 > Outros comandos
 git status
 git remote -v
+
+1. Estruturação de pastas, com Atomic Design
+2. Typescript ()
+3. Hooks (Componente 'Counter' criado)
+4. Adicionado rotas (react-router-dom @types/react-router-dom)
+5. Sass ()
+

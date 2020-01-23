@@ -20,7 +20,6 @@ jobs:
             jq --raw-output ".projectStatus.status")
             echo "SonarCloud API: $BT_STATUS"
             if [ "$BT_STATUS" != "OK" ]; then
-              echo "Error [SonarCloud API Status: $BT_STATUS]"
               exit 1
             fi 
      

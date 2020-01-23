@@ -9,10 +9,11 @@ jobs:
     steps:    
       - uses: actions/checkout@v1
       - name: sonarCloudScan
-        uses: sonarsource/sonarcloud-github-action@master
-        env: 
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}          
+        run: sonar-scanner -X
+        #uses: sonarsource/sonarcloud-github-action@master
+        #env: 
+        #  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        #  SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}          
           
       - name: SonarCloudResult   
         run: | 

@@ -1,0 +1,26 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:    
+      - uses: actions/checkout@v1
+      - name: sonarCloudScan
+        uses: sonarsource/sonarcloud-github-action@master
+        env: 
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}          
+          
+      - name: SonarCloudResult   
+        run: | 
+            BT_STATUS=$(curl -L -s --max-redirs 1 "http://sonarcloud.io/api/qualitygates/project_status?projectKey=bcbrunocesar_react-hooks-ts" |\
+            jq --raw-output ".projectStatus.status")
+            echo "SonarCloud API: $BT_STATUS"
+            if [ "$BT_STATUS" != "OK" ]; then
+              exit 1
+            fi 
+     
+      
